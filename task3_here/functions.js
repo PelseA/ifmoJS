@@ -1,6 +1,8 @@
 //1. Написать функцию сравнения двух массивов.
 // Функция принимает на вход два массива, сравнивает их и возвращает true,
 // если массивы равны и false, если не равны.
+(function () {
+    'use strict';
 let fruits = ['apple', 'orange', 'lemon'];
 let meals = ['apple', 'orange', 'lemon'];
 let berries = ['blueberry', 'strawberry', 'blackberry', 'cranberry'];
@@ -24,18 +26,17 @@ function matchArray(arr1, arr2) {
     else {
         for (let j = 0; j < arr1.length; j++) {//сравнит столько раз, сколько элементов в массиве
             for (let i = 0; i < arr1.length; i++) {//на каждой итерации(j) будут сравниваться элементы массивов под индексом i
-                if (arr1[i] === arr2[i]) {
-                } else {
-                    console.log('массивы НЕравные');
+                if (arr1[i] !== arr2[i]) {
+                    console.log('массивы НЕ равны');
                     return;
-                }
+                } 
+                console.log('массивы РАВНЫ');
+                return;   
             }
-            console.log('массивы равные');
-            return true;
         }
     }
 };
-matchArray();
+matchArray(fruits, meals);
 //2. Дано натуральное число N. Вычислите сумму его цифр,
 // используя рекурсию (строки, массивы и циклы использовать запрещено).
 function sumEvery(num, temp = 0) {
@@ -43,8 +44,8 @@ function sumEvery(num, temp = 0) {
         console.log('введите число больше 0');
         return;
     };
-        n = num % 10; //сохранили в n последнюю цифру заданного числа
-        sum = n + temp;
+        let n = num % 10; //сохранили в n последнюю цифру заданного числа
+        let sum = n + temp;
         if( num < 10){
             console.log('сумма равна ' + sum);
             return;
@@ -79,7 +80,7 @@ function rightWrite(count) {
         return;
     }
     let needArr = [];
-    countArr = count;
+    let countArr = count;
     while (countArr > 0) {
         needArr.unshift(countArr % 10);
         countArr = countArr / 10 | 0;
@@ -102,6 +103,7 @@ function rightWrite(count) {
     }
 }
 rightWrite(71);
+}()); 
 
 
 
