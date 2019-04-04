@@ -9,13 +9,11 @@
     let myString = 'Я иду тУда';
     let myStrOut = 'туда';
     let myStrAdd = 'обратно';
-    // let newSt = str.replace(/туда/i, strAdd); //так работает
-    // console.log(newSt);
     function changeString(str, strOut, strAdd){
-        let re = '\/' + strOut + '\/'  + 'i' ; //  /туда/i
-        //re = eval('({obj:[' + re + ']})'); // это НЕ помогло
+        // let re = /туда/i;
+        let re = new RegExp(strOut, "i") ; //  /туда/i
         let newStr;
-        newStr = str.replace(re, strAdd); //а так НЕ РАБОТАЕТ :( Дело типе данных re = '/туда/i' ?
+        newStr = str.replace(re, strAdd);
         return newStr;
     }
     console.log(changeString(myString, myStrOut, myStrAdd));
@@ -37,6 +35,7 @@
     }
     let adress = 'дом 48, корпус 9, парадная 7, этаж 4';
     console.log(numberToArray(adress));
+
 
 // 3. Допустим, пользователь вводит названия городов через пробел.
 //     Вы их присваиваете переменной.
