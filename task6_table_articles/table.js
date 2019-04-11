@@ -30,27 +30,23 @@ function createTable(array){
     let caption = table.createCaption();//создали заголовок таблице
     caption.innerText = 'Статьи';//вставили текст в заголовок
     let row = table.insertRow(0); //вставили ряд для шапки
-    let cell1 = row.insertCell(0);//в ряд вставляем ячейки там будут названия столбцов
-    let cell2 = row.insertCell(1);
-    let cell3 = row.insertCell(2);
-    let cell4 = row.insertCell(3);
     let firstIndex = array[0];//в каждом индексе ключи одинаковые, возьмем первый индекс
     let keys = Object.keys(firstIndex);//массив с названиями ключей, нужны для названия столбцов
-        cell1.innerText = keys[0];//вставили название столбца
-        cell2.innerText = keys[1];//вставили название столбца
-        cell3.innerText = keys[2];//вставили название столбца
-        cell4.innerText = keys[3];//вставили название столбца
-    for (let i = 0; i < array.length; i++) {
+    for(let i = 0; i < keys.length; i++){
+            let cell = 'cell' + '_' + keys[i];
+            cell = row.insertCell();//в ряд вставляем ячейки там будут названия столбцов
+            cell.innerText = keys[i];//вставили название столбца
+    }
+    for (let i = 0; i < array.length; i++) {//заполним таблицу содержимым
         let every_row = table.insertRow();
-        let cell_id = every_row.insertCell();
-        let cell_title = every_row.insertCell();
-        let cell_desc = every_row.insertCell();
-        let cell_name = every_row.insertCell();
-            let obj = array[i];
-            cell_id.innerText = obj.id;
-            cell_title.innerText = obj.title;
-            cell_desc.innerText = obj.description;
-            cell_name.innerText = obj.author;
+        let obj = array[i];
+        for(prop in obj){
+            let cell = 'cell' + '_' + keys[i];
+            cell = every_row.insertCell();
+            cell.innerText = obj[prop];
+        }
     }
 };
 createTable(articles);
+
+
