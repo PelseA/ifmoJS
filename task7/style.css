@@ -1,0 +1,35 @@
+body{
+    background: beige;
+}
+#prize_table{
+    margin: 20px;
+}
+table tr{
+    height:70px;
+
+}
+table td {
+    width:70px;
+    text-align: center;
+}
+.button{
+    background: greenyellow;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+}
+.button:hover{
+    cursor: pointer;
+}
+.open_cell{
+    background: orangered;
+}
+a{
+    margin: 20px;
+    font-size: larger;
+    color: maroon;
+    text-decoration: none;
+}
+a:hover{
+    cursor: pointer;
+}
