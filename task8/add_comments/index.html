@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="comments_style.css">
+</head>
+<body>
+<section>
+    <div class="article">
+        <h2>Название статьи</h2>
+        <div class="article_text">
+            <p>При вызове на элементе внутри HTML документа, setAttribute переведет имя атрибута в нижний регистр.
+            Если указанный атрибут уже существует, его значение изменится на новое.
+            Если атрибута ранее не существовало, он будет создан.
+            Несмотря на то, что метод  getAttribute() возвращает null у удаленных атрибутов,
+            вы должны использовать removeAttribute() вместо elt.setAttribute(attr, null), чтобы удалить атрибут.
+            Последний заставит значение null быть строкой "null", которая, вероятно, не то, что вы хотите.
+            </p>
+        </div>
+    </div>
+        <label for="user_name">Ваше имя</label>
+        <input id="user_name" type="text" placeholder="Ваше имя"><br/>
+        <label for="comment">Ваше комментарий</label><br/>
+        <textarea id="comment" rows="10" cols="70" placeholder="Ваш комментарий..."></textarea>
+        <p><input id="generate_comment" type="submit" value="Оставить комментарий"></p>
+        <p><input type="reset" value="Очистить"></p>
+</section>
+<script src="add_comments.js"></script>
+</body>
+</html>
