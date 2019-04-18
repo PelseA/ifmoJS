@@ -1,0 +1,10 @@
+body{
+    margin: 20px 0 0 40px;
+}
+.cell_title{
+    color: darkred;
+    font-weight: bolder;
+}
+.cell_title:hover{
+    cursor: pointer;
+}
