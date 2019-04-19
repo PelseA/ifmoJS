@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <title>Смена цвета и 'disabled input'</title>
+</head>
+<body>
+<fieldset id="change_color_fieldset">
+    <legend>Смена фона</legend>
+    <p><input type="radio" name="bg" value="blue">Голубой</p>
+    <p><input type="radio" name="bg" value="pink">Розовый</p>
+    <p><input type="radio" name="bg" value="yellow">Желтый</p>
+</fieldset>
+<fieldset id="disabled_input">
+    <legend>блокировка ввода</legend>
+    <p><input type="text" id="input_text" disabled></p>
+    <p><input type="checkbox" id="toggle">Ввести текст</p>
+</fieldset>
+
+
+<script src="toggle_disabled.js"></script>
+</body>
+</html>
