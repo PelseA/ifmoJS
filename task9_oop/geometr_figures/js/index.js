@@ -1,5 +1,7 @@
 //triangle или rectangle или circle
-let figure = new Figure('triangle');
-figure.coord = [[2, 4], [7,8], [5, 7]];
-figure.countArea();
-figure.countPerimeter();
+let figure = new Triangle();
+figure.sides = [6, 7, 17];
+console.log(figure);
+console.log(figure.sides);
+figure.areaOfTriangle();
+figure.perimeterOfTriangle();
