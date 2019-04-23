@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/cat_fighter.iml" filepath="$PROJECT_DIR$/.idea/cat_fighter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/cat_fight_lesson.iml" filepath="$PROJECT_DIR$/.idea/cat_fight_lesson.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../ifmoJS/task9_oop/.idea/task9_oop.iml" filepath="$PROJECT_DIR$/../../ifmoJS/task9_oop/.idea/task9_oop.iml" />
     </modules>
   </component>
 </project>
