@@ -11,12 +11,22 @@ function findSynonymsSpecialities(input) {
   else return [];
 }
 
+/*
+принимаемые аргументы
+1.массив строк,
+2.объект (в котором будет произведен поиск),
+3.строка (ключ, по которому будет происходить сравнение)
+возвращаемое значение boolean:
+false - ни одного слова из массива синонимов не найдено в значениях объекта
+true - найдено
+*/
 function isDoctorAvailable(synonyms, objectResponse, keyName) {
   if (typeof objectResponse === "object") {
     for(key in objectResponse) {
       if (key.toLowerCase() == keyName.toLowerCase()) {
         for(i = 0; i < synonyms.length; i++) {
           if(String(synonyms[i]).trim().toLowerCase() === String(objectResponse[key]).trim().toLowerCase()) {
+            //console.log(String(synonyms[i]).trim().toLowerCase() === String(objectResponse[key]).trim().toLowerCase());
             return true;
           }
         }
@@ -62,3 +72,17 @@ var synonyms = findSynonymsSpecialities('лор');
 
 isDoctorAvailable([9], a, 'code');
 isDoctorAvailable(synonyms, a, 'name');
+
+/*
+Не работает функция isDoctorAvailable()
+я ожидаю, что сработает условие на 28 строке и функция вернет true.
+но она возвращает false.
+в закомментированном console.log действительно true => я уверена, что функция должна завершиться и вернуть true.
+что я думаю по этому поводу:
+1.каким-то образом функция заканчивает свое выполнение с false раньше, чем закончится итерация.
+2.я допустила логическую ошибку
+3.может, это замыкание?
+4
+
+
+*/
