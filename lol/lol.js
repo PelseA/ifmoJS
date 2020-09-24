@@ -68,3 +68,45 @@ var res = [];
 var s = findSynonymsSpecialities("лор");
 
 isDoctorAvailable(s, a, 'name', res);
+
+var b = {
+  "result1": {
+    "result2": {
+      "result3": {
+        "result4": [
+            {
+                "result5" :
+              [
+                {
+                  "code": 603,
+                  "name": "Оториноларинголог"
+                },
+                {
+                  "code": 200,
+                  "name": "Участковый врач"
+                },
+                {
+                  "code": 2,
+                  "name": "Уролог"
+                },
+                {
+                  "code": 9,
+                  "name": "Невролог",
+                  "inner": {
+                         "deepKey": "deep"
+                  }
+                }
+              ]
+            }
+        ]
+      }
+    }
+  }
+};
+
+//привести объект b к нормальному виду
+var arr = [];
+arr.push(b.result1.result2.result3.result4[0].result5);
+
+var res2 = [];
+isDoctorAvailable(['deep value'], b, 'deepKey', res2);
