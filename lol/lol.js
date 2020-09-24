@@ -11,20 +11,26 @@ function findSynonymsSpecialities(input) {
   else return [];
 }
 
-function isDoctorAvailable(synonyms, objectResponse, keyName) {
+/*
+принимаемые аргументы
+1.массив строк,
+2.объект (в котором будет произведен поиск),
+3.строка (ключ, по которому будет происходить сравнение)
+4.result = []
+*/
+function isDoctorAvailable(synonyms, objectResponse, keyName, result) {
   if (typeof objectResponse === "object") {
     for(key in objectResponse) {
-      if (key.toLowerCase() == keyName.toLowerCase()) {
+      if(objectResponse[key].hasOwnProperty(keyName)) {
         for(i = 0; i < synonyms.length; i++) {
-          if(String(synonyms[i]).trim().toLowerCase() === String(objectResponse[key]).trim().toLowerCase()) {
-            return true;
+          if(String(synonyms[i]).trim().toLowerCase() === objectResponse[key][keyName].trim().toLowerCase()) {
+            result.push(objectResponse[key]);
           }
         }
       }
-      isDoctorAvailable(synonyms, objectResponse[key], keyName);
+      if(result.length === 0) isDoctorAvailable(synonyms, objectResponse[key], keyName, result);
     }
   }
-  return false;
 }
 
 var a = {
@@ -58,7 +64,6 @@ var a = {
   "dateBirthFromPolis": "1983-04-16"
 };
 
-var synonyms = findSynonymsSpecialities('лор');
 
-isDoctorAvailable([9], a, 'code');
-isDoctorAvailable(synonyms, a, 'name');
+
+
