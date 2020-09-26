@@ -23,9 +23,8 @@ function isDoctorAvailable(synonyms, objectResponse, keyName, result) {
     for(key in objectResponse) {
       if(objectResponse[key].hasOwnProperty(keyName)) {
         for(i = 0; i < synonyms.length; i++) {
-          if(String(synonyms[i]).trim().toLowerCase() === objectResponse[key][keyName].trim().toLowerCase()) {
-            result.push(objectResponse[key]);
-          }
+          var reg = new RegExp(objectResponse[key][keyName], "i");
+          if(reg.test(synonyms[i])) result.push(objectResponse[key]);
         }
       }
       if(result.length === 0) isDoctorAvailable(synonyms, objectResponse[key], keyName, result);
@@ -64,25 +63,50 @@ var a = {
   "dateBirthFromPolis": "1983-04-16"
 };
 
+var res = [];
 
-<<<<<<< HEAD
+var s = findSynonymsSpecialities("лор");
 
+isDoctorAvailable(s, a, 'name', res);
 
-=======
-isDoctorAvailable([9], a, 'code');
-isDoctorAvailable(synonyms, a, 'name');
+var b = {
+  "result1": {
+    "result2": {
+      "result3": {
+        "result4": [
+            {
+                "result5" :
+              [
+                {
+                  "code": 603,
+                  "name": "Оториноларинголог"
+                },
+                {
+                  "code": 200,
+                  "name": "Участковый врач"
+                },
+                {
+                  "code": 2,
+                  "name": "Уролог"
+                },
+                {
+                  "code": 9,
+                  "name": "Невролог",
+                  "inner": {
+                         "deepKey": "deep"
+                  }
+                }
+              ]
+            }
+        ]
+      }
+    }
+  }
+};
 
-/*
-Не работает функция isDoctorAvailable()
-я ожидаю, что сработает условие на 28 строке и функция вернет true.
-но она возвращает false.
-в закомментированном console.log действительно true => я уверена, что функция должна завершиться и вернуть true.
-что я думаю по этому поводу:
-1.каким-то образом функция заканчивает свое выполнение с false раньше, чем закончится итерация.
-2.я допустила логическую ошибку
-3.может, это замыкание?
-4
+//привести объект b к нормальному виду
+var arr = [];
+arr.push(b.result1.result2.result3.result4[0].result5);
 
-
-*/
->>>>>>> f2ee9c3a15822624fbc10205d0176923a254539c
+var res2 = [];
+isDoctorAvailable(['deep value'], b, 'deepKey', res2);
