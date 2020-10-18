@@ -107,6 +107,62 @@ var b = {
 //привести объект b к нормальному виду
 var arr = [];
 arr.push(b.result1.result2.result3.result4[0].result5);
-
 var res2 = [];
 isDoctorAvailable(['deep value'], b, 'deepKey', res2);
+
+/*date markers*/
+//var prepositions = ["к", "в"];
+var terms = [
+"в первой половине",
+"во второй половине",
+"в первой декаде",
+"во второй декаде",
+"в третьей декаде",
+"к концу",
+"в конце",
+"в начале",
+"в середине",
+"к середине"
+];
+var definitions = ["этого", "текущего", "следующего", "будущего"];
+var periods = ["недели", "месяца", "года"];
+
+var phrase;
+for(i = 0; i < terms.length; i++) {
+    for(j = 0; j < definitions.length; j ++) {
+        for(k = 0; k < periods.length; k ++) {
+            phrase = terms[i] + ' ' + definitions[j] + ' ' + periods[k];
+            console.log(phrase);
+        }
+    }
+}
+console.log("===========================================");
+var months = [
+"января",
+"февраля",
+"марта",
+"апреля",
+"мая",
+"июня",
+"июля",
+"августа",
+"сентября",
+"октября",
+"ноября",
+"декабря"
+];
+
+for(i = 0; i < terms.length; i++) {
+    for(k = 0; k < months.length; k ++) {
+         phrase = terms[i] + ' ' + months[k];
+         console.log(phrase);
+    }
+}
+console.log("===========================================");
+definitions = ["этой(-м)", "текущей(-м)", "следующей(-м)", "будущеЙ(-м)"];
+periods = ["неделе", "месяце", "году"];
+for (i = 0; i < definitions.length; i++) {
+    for (j = 0; j < periods.length; j++) {
+        console.log("На/в " + definitions[i] + " " + periods[j]);
+    }
+}
