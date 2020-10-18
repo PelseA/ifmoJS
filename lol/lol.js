@@ -124,7 +124,7 @@ var terms = [
 "в середине",
 "к середине"
 ];
-var definitions = ["этого", "текущего", "следующего", "будущего"];
+var definitions = ["это(й|го)", "текуще(й|го)", "следующе(й|го)", "будуще(й|го)"];
 var periods = ["недели", "месяца", "года"];
 
 var phrase;
@@ -159,10 +159,10 @@ for(i = 0; i < terms.length; i++) {
     }
 }
 console.log("===========================================");
-definitions = ["этой(-м)", "текущей(-м)", "следующей(-м)", "будущеЙ(-м)"];
+definitions = ["это(й|м)", "текуще(й|м)", "следующе(й|м)", "будуще(й|м)"];
 periods = ["неделе", "месяце", "году"];
 for (i = 0; i < definitions.length; i++) {
     for (j = 0; j < periods.length; j++) {
-        console.log("На/в " + definitions[i] + " " + periods[j]);
+        console.log("(на/в) " + definitions[i] + " " + periods[j]);
     }
 }
