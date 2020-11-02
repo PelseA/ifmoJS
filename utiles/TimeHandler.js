@@ -35,55 +35,85 @@ class TimeHandler {
 
     //передаваемый аргумент - строка, например 'одиннадцать'
     #prepareTime(desiredTime) {
-        if(/двенадцать/i.test(string)) return [12, 0];
-        if(/час/i.test(string)) return [13, 1];
-        if(/два/i.test(string)) return [14, 2];
-        if(/три/i.test(string)) return [15, 3];
-        if(/четыре/i.test(string)) return [16, 4];
-        if(/пять/i.test(string)) return [17, 5];
-        if(/шесть/i.test(string)) return [18, 6];
-        if(/семь/i.test(string)) return [19, 7];
-        if(/восемь/i.test(string)) return [20, 8];
-        if(/девять/i.test(string)) return [21, 9];
-        if(/десять/i.test(string)) return [22, 10];
-        if(/одиннадцать/i.test(string)) return [23, 11];
+        if(/двенадцать/i.test(desiredTime)) return [12, 0];
+        if(/час/i.test(desiredTime)) return [13, 1];
+        if(/два/i.test(desiredTime)) return [14, 2];
+        if(/три/i.test(desiredTime)) return [15, 3];
+        if(/четыре/i.test(desiredTime)) return [16, 4];
+        if(/пять/i.test(desiredTime)) return [17, 5];
+        if(/шесть/i.test(desiredTime)) return [18, 6];
+        if(/семь/i.test(desiredTime)) return [19, 7];
+        if(/восемь/i.test(desiredTime)) return [20, 8];
+        if(/девять/i.test(desiredTime)) return [21, 9];
+        if(/десять/i.test(desiredTime)) return [22, 10];
+        if(/одиннадцать/i.test(desiredTime)) return [23, 11];
         return null;
     }
 
     isNeedSpecify(desiredTime) {
         if(!desiredTime) return null;
+        desiredTime = this.#prepareTime(desiredTime);
+        if(!desiredTime) return null; //эта вторая такая же проверка не нравится
         if(this.#checkInclusion(desiredTime)) {
-            if(desiredTime === [12, 0] || desiredTime === [13, 1] || desiredTime === [14, 2]
-                || desiredTime === [15, 3] || desiredTime === [16, 4] ) {
+            if((desiredTime[0] === 12 &&  desiredTime[1] === 0) 
+            	|| (desiredTime[0] === 13 &&  desiredTime[1] === 1) 
+            	|| (desiredTime[0] === 14 &&  desiredTime[1] === 2)
+                || (desiredTime[0] === 15 &&  desiredTime[1] === 3) 
+                || (desiredTime[0] === 16 &&  desiredTime[1] === 4)) {
                 return [TimeHandler.DAY, TimeHandler.NIGHT];
             }
-            if(desiredTime === [17, 5] || desiredTime === [18, 6] || desiredTime === [19, 7]
-                || desiredTime === [20, 8] || desiredTime === [21, 9] || desiredTime === [22, 10]
-                || desiredTime === [23, 11] ) {
+            if((desiredTime[0] === 17 && desiredTime[1] === 5)
+            	|| (desiredTime[0] ===18 && desiredTime[1] === 6) 
+            	|| (desiredTime[0] ===19 && desiredTime[1] === 7)
+                || (desiredTime[0] ===20 && desiredTime[1] === 8)
+                || (desiredTime[0] ===21 && desiredTime[1] === 9) 
+                || (desiredTime[0] ===22 && desiredTime[1] === 10)
+                || (desiredTime[0] ===23 && desiredTime[1] === 11) ) {
                 return [TimeHandler.MORNING, TimeHandler.EVENING];
             }
         }
+        return null;
     }
 
     /*desiredTime - это массив*/
     #checkInclusion(desiredTime) {
         if(!desiredTime) return null;
-        var allHours = this.#allHours;
-        return (allHours.includes(desiredTime[0]) && allHours.includes(desiredTime[1]));
+        var hours = this.#allHours();
+        return (hours.includes(desiredTime[0]) && hours.includes(desiredTime[1]));
     }
 
     #allHours() {
-        var allHours = [];
-        for(i = this._start; i < 24; i++) {
-            allHours.push(i);
+        var hours = [];
+        for(var i = this._start; i < 24; i++) {
+            hours.push(i);
         }
         if(this._end !== 0) {
-            for(i = 0; i <= this._end; i++) {
-                allHours.push(i);
+            for(var i = 0; i <= this._end; i++) {
+                hours.push(i);
             }
         }
-        return allHours;
+        console.log(hours);
+        return hours;
     }
 
 }
 
+//test
+var timeHandler = new TimeHandler(10, 6);
+var desiredTime12 = "двенадцать";
+var desiredTime2 = "два";
+var desiredTime8 = "восемь";
+var desiredTime1 = "час";
+var desiredTime5 = "пять";
+console.log(timeHandler.isNeedSpecify(desiredTime12));
+console.log(timeHandler.isNeedSpecify(desiredTime2));
+console.log(timeHandler.isNeedSpecify(desiredTime8));
+console.log(timeHandler.isNeedSpecify(desiredTime1));
+console.log(timeHandler.isNeedSpecify(desiredTime5));
+
+timeHandler = new TimeHandler();
+console.log(timeHandler.isNeedSpecify(desiredTime12));
+console.log(timeHandler.isNeedSpecify(desiredTime2));
+console.log(timeHandler.isNeedSpecify(desiredTime8));
+console.log(timeHandler.isNeedSpecify(desiredTime1));
+console.log(timeHandler.isNeedSpecify(desiredTime5));
