@@ -1,5 +1,3 @@
-//https://www.youtube.com/watch?v=VrayPysaeGY
-
 /*
 если не озвучили время суток(дня, вечера),
 если требуется уточнение времени суток (в общепринятых употреблениях).
@@ -97,23 +95,3 @@ class TimeHandler {
     }
 
 }
-
-//test
-var timeHandler = new TimeHandler(10, 6);
-var desiredTime12 = "двенадцать";
-var desiredTime2 = "два";
-var desiredTime8 = "восемь";
-var desiredTime1 = "час";
-var desiredTime5 = "пять";
-console.log(desiredTime12 + " : " + timeHandler.isNeedSpecify(desiredTime12));
-console.log(desiredTime2 + " : " + timeHandler.isNeedSpecify(desiredTime2));
-console.log(desiredTime8 + " : " + timeHandler.isNeedSpecify(desiredTime8));
-console.log(desiredTime1 + " : " + timeHandler.isNeedSpecify(desiredTime1));
-console.log(desiredTime5 + " : " + timeHandler.isNeedSpecify(desiredTime5));
-
-timeHandler = new TimeHandler();
-console.log(desiredTime12 + " : " + timeHandler.isNeedSpecify(desiredTime12));
-console.log(desiredTime2 + " : " + timeHandler.isNeedSpecify(desiredTime2));
-console.log(desiredTime8 + " : " + timeHandler.isNeedSpecify(desiredTime8));
-console.log(desiredTime1 + " : " + timeHandler.isNeedSpecify(desiredTime1));
-console.log(desiredTime5 + " : " + timeHandler.isNeedSpecify(desiredTime5));
